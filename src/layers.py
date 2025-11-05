@@ -141,3 +141,16 @@ class LinearCrossEntropy:
         self.db = db
         
         return dX
+    
+    def predict(self, X: np.ndarray) -> np.ndarray:
+        """Helper method to perform the forward pass but instead of returning the loss, return the classifications
+
+        Args:
+            X (np.ndarray): Input observations (activations from previous layer of a network)
+
+        Returns:
+            np.ndarray: Resulting classification predictions
+        """
+        Z = np.matmul(X, self.weights) + self.biases
+        # Just return the maximum classification index for each observation
+        return np.argmax(Z, axis=1)
