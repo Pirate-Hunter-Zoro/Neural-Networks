@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 # Hyperparameters
-LEARNING_RATE = 0.01
+LEARNING_RATE = 0.001
 REG_STRENGTH = 0.0001
 EPOCHS = 100
 
