@@ -4,7 +4,7 @@ import numpy as np
 class LinearReLU:
     
     def __init__(self, input_dim: int, output_dim: int):
-        self.weights = np.random.randn(input_dim, output_dim)
+        self.weights = np.random.randn(input_dim, output_dim) * 0.01
         self.biases = np.zeros(output_dim)
         # Cache needed for backward propagation
         self.cache = {}
@@ -74,14 +74,14 @@ def one_hot_encode(y: np.ndarray, num_classes: int) -> np.ndarray:
     """
     y_one_hot = np.zeros(shape=(y.shape[0], num_classes))
     # Go through all observations in y, and for that corresponding vector in y_one_hot, make the index of that vector 1 at whatever value y took on
-    y_one_hot[np.arange(y.shape[0]), y] = 1 
+    y_one_hot[np.arange(y.shape[0]), y.astype(int)] = 1 
     return y_one_hot
 
 
 class LinearCrossEntropy:
     
     def __init__(self, input_dim: int, output_dim: int):
-        self.weights = np.random.randn(input_dim, output_dim)
+        self.weights = np.random.randn(input_dim, output_dim) * 0.01
         self.biases = np.zeros(output_dim)
         self.cache = {}
         

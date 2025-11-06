@@ -27,7 +27,7 @@ class NeuralNetwork:
         """
         A = X
         # Each layer stores what it needs to for when we call back propagation
-        for layer in self.layers[:-1]:
+        for layer in self.layers[:len(self.layers)-1]:
             A = layer.forward(A)
         return self.layers[-1].forward(A, y, self.reg) # Returns the cross entropy loss of the final layer
     
