@@ -44,5 +44,5 @@ class Model1B(nn.Module):
             nn.Linear(in_features=1024, out_features=num_classes)
         )
         
-        def forward(self, x):
-            return self.layers(x)
+    def forward(self, x):
+        return self.layers(x)
