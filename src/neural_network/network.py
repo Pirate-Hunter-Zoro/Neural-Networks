@@ -1,7 +1,7 @@
 import numpy as np
 from typing import List, Tuple
 
-from src.layers import LinearReLU, LinearCrossEntropy
+from src.neural_network.layers import LinearReLU, LinearCrossEntropy
 
 class NeuralNetwork:
     

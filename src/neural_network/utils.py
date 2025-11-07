@@ -18,7 +18,7 @@ def plot_loss(train_losses: List[int], test_losses: List[int], filename: str):
     plt.plot(epochs, train_losses, label="Training Loss")
     plt.plot(epochs, test_losses, label="Testing Loss")
     plt.legend()
-    plt.savefig(f"outputs/{filename}")
+    plt.savefig(f"src/neural_network/outputs/{filename}")
     plt.clf()
     
 def calculate_accuracy(y_true: np.ndarray, y_pred: np.ndarray) -> float:

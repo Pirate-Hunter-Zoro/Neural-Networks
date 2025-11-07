@@ -1,6 +1,6 @@
-from src.data import load_dataset
-from src.network import NeuralNetwork
-from src.utils import plot_loss, calculate_accuracy
+from src.neural_network.data import load_dataset
+from src.neural_network.network import NeuralNetwork
+from src.neural_network.utils import plot_loss, calculate_accuracy
 import numpy as np
 import json
 from pathlib import Path
@@ -44,7 +44,7 @@ def main():
             accuracy = calculate_accuracy(y_test, y_pred)
             print(f"Final Test Accuracy for {config_name}: {accuracy * 100:.2f}%")
             accuracy_report[dataset_name][config_name] = accuracy
-    results_file = Path("outputs/accuracy_report.json")
+    results_file = Path("src/neural_networks/outputs/accuracy_report.json")
     with open(results_file, 'w') as f:
         json.dump(accuracy_report, f, indent=4)
         print(f"Results stored in {str(results_file)}...")
