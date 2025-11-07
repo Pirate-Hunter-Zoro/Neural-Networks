@@ -1,0 +1,47 @@
+import torch.nn as nn
+
+class Model1A(nn.Module):
+    def __init__(self, num_classes: int):
+        super().__init__()
+        self.layers = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=16, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=16, out_channels=16, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2),
+            nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2),
+            nn.Flatten(),
+            nn.Linear(in_features=1024, out_features=1024),
+            nn.ReLU(),
+            nn.Linear(in_features=1024, out_features=num_classes)
+        )
+    def forward(self, x):
+        return self.layers(x)
+        
+        
+class Model1B(nn.Module):
+    def __init__(self, num_classes: int):
+        super().__init__()
+        self.layers = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=64, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2),
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2),
+            nn.Flatten(),
+            nn.Linear(in_features=1024, out_features=1024),
+            nn.ReLU(),
+            nn.Linear(in_features=1024, out_features=num_classes)
+        )
+        
+        def forward(self, x):
+            return self.layers(x)
