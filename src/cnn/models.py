@@ -15,7 +15,8 @@ class Model1A(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2),
             nn.Flatten(),
-            nn.Linear(in_features=1024, out_features=1024),
+            # You'll have to guess let the code crash once to see which dimension you need for the in features of the first liinear layer
+            nn.Linear(in_features=1568, out_features=1024),
             nn.ReLU(),
             nn.Linear(in_features=1024, out_features=num_classes)
         )

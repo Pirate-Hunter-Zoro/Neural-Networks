@@ -20,8 +20,8 @@ def create_dataloaders(dataset_name: str, batch_size: int) -> Tuple[DataLoader, 
         dataset_class = datasets.MNIST
     else:
         raise ValueError(f"Invalid dataset specified: {dataset_name}...")
-    data_train = dataset_class(train=True, download=True, transform=transform)
-    data_test = dataset_class(train=False, download=True, transform=transform)
+    data_train = dataset_class(root="data", train=True, download=True, transform=transform)
+    data_test = dataset_class(root="data", train=False, download=True, transform=transform)
     
     train_loader = DataLoader(dataset=data_train, batch_size=batch_size)
     test_loader = DataLoader(dataset=data_test, batch_size=batch_size)
