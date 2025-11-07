@@ -6,9 +6,11 @@ import json
 from pathlib import Path
 
 # Hyperparameters
-LEARNING_RATE = 0.001
-REG_STRENGTH = 0.0001
-EPOCHS = 100
+HYPERPARAMS = {
+    'digits': {'lr': 0.001, 'reg': 0.0001, 'epochs': 100},
+    'credit': {'lr': 0.001, 'reg': 0.01, 'epochs': 100}, 
+    'mushroom': {'lr': 0.0001, 'reg': 0.0001, 'epochs': 100} 
+}
 
 DATASETS = ['digits', 'credit', 'mushroom']
 
@@ -21,6 +23,10 @@ CONFIGURATIONS = {
 def main():
     accuracy_report = {}
     for dataset_name in DATASETS:
+        # The dataset determines the hyperparameters
+        REG_STRENGTH = HYPERPARAMS[dataset_name]['reg']
+        LEARNING_RATE = HYPERPARAMS[dataset_name]['lr']
+        EPOCHS = HYPERPARAMS[dataset_name]['epochs']
         print(f"--- Processing Dataset: {dataset_name} ---")
         accuracy_report[dataset_name] = {}
         X_train, y_train, X_test, y_test = load_dataset(dataset_name=dataset_name)
