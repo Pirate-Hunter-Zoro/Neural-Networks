@@ -32,7 +32,7 @@ def evaluate_model(model: nn.Module, model_name: str, loss_fn: nn.Module, train_
         results["train_loss"].append(train_loss)
         results["test_loss"].append(test_loss)
     
-    # Plot results for first model
+    # Plot results for model
     plot_loss_and_accuracy(results=results, filename=f"{model_name}_results.png")
 
 def main():

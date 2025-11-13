@@ -39,7 +39,8 @@ class Model1B(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2),
             nn.Flatten(),
-            nn.Linear(in_features=1024, out_features=1024),
+            # Gotta let the code crash to find out what in_features needs to be
+            nn.Linear(in_features=6272, out_features=1024),
             nn.ReLU(),
             nn.Linear(in_features=1024, out_features=num_classes)
         )
