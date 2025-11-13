@@ -4,7 +4,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from pathlib import Path
 from src.cnn.data import create_dataloaders
-from src.cnn.models import Model1A, Model1B
+from src.cnn.models import Model1A, Model1B, Model2
 from src.cnn.engine import train_step, test_step
 from src.cnn.utils import plot_loss_and_accuracy
 
@@ -41,9 +41,11 @@ def main():
 
     model_1a = Model1A(num_classes=10).to(DEVICE)
     model_1b = Model1B(num_classes=10).to(DEVICE)
+    model_2 = Model2(num_classes=10).to(DEVICE)
     
     evaluate_model(model=model_1a, model_name="model_1a", loss_fn=loss_fn, train_dataloader=train_dataloader, test_dataloader=test_dataloader)
     evaluate_model(model=model_1b, model_name="model_1b", loss_fn=loss_fn, train_dataloader=train_dataloader, test_dataloader=test_dataloader)
+    evaluate_model(model=model_2, model_name="model_2", loss_fn=loss_fn, train_dataloader=train_dataloader, test_dataloader=test_dataloader)
     
 if __name__=="__main__":
     main()
