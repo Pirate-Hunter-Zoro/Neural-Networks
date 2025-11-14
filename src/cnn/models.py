@@ -106,3 +106,60 @@ class Model3(nn.Module):
         
     def forward(self, x):
         return self.layers(x)
+    
+    
+class Model4(nn.Module):
+    def __init__(self, num_classes: int):
+        super().__init__()
+        self.layers = nn.Sequential(
+            # Block 1
+            nn.Conv2d(in_channels=1, out_channels=64, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.BatchNorm2d(64),
+            nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.BatchNorm2d(64),
+            nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.BatchNorm2d(64),
+            nn.MaxPool2d(kernel_size=2),
+            nn.Dropout(0.5),
+            
+            # Block 2
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.BatchNorm2d(128),
+            nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.BatchNorm2d(128),
+            nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.BatchNorm2d(128),
+            nn.MaxPool2d(kernel_size=2),
+            nn.Dropout(0.5),
+            
+            # Block 3
+            nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding='same'),
+            nn.ReLU(),
+            nn.BatchNorm2d(256),
+            nn.MaxPool2d(kernel_size=2),
+            nn.Dropout(0.5),
+            
+            # Dense layers
+            nn.Flatten(),
+            # Once again gotta let the code crash to find out what in_features needs to be
+            nn.Linear(in_features=2304, out_features=1024),
+            nn.ReLU(),
+            nn.Linear(in_features=1024, out_features=512),
+            nn.ReLU(),
+            nn.Linear(in_features=512, out_features=num_classes)
+        )
+        
+    def forward(self, x):
+        return self.layers(x)
