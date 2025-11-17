@@ -36,7 +36,7 @@ def plot_attention_heads(attn: torch.tensor, tokens: torch.tensor, filename: str
     for ax in axes[H:]:
         ax.axis("off")
     plt.tight_layout()
-    Path("outputs").mkdir(parents=True, exist_ok=True)
+    Path("src/transformer/outputs").mkdir(parents=True, exist_ok=True)
     plt.savefig(f"outputs/{filename}")
     
 def load_bert_weights_into_mha(bert_model, layer_id: int) -> MultiHeadAttention:
