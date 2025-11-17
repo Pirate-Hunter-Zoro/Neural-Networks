@@ -4,3 +4,4 @@ torchvision
 matplotlib
 scikit-learn
 pandas
+seaborn
